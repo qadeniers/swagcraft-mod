@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_25",
   "mixins": [
     "PlayerMixin",
-    "FoodMixin"
+    "FoodMixin",
+    "FireworkRocketItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1
