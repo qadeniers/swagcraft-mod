@@ -5,7 +5,8 @@
   "mixins": [
     "PlayerMixin",
     "FoodMixin",
-    "FireworkRocketItemMixin"
+    "FireworkRocketItemMixin",
+    "DrownedMixin"
   ],
   "injectors": {
     "defaultRequire": 1

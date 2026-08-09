@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FoodData.class)
-public class FoodMixin {
+public abstract class FoodMixin {
     @Shadow private int foodLevel;
     @Shadow private float saturationLevel;
     @Shadow private float exhaustionLevel;
