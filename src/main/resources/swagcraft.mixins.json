@@ -9,7 +9,10 @@
     "DrownedMixin",
     "RabbitMixin",
     "RabbitPanicGoalMixin",
-    "ProjectileMixin"
+    "ProjectileMixin",
+    "VillagerAiMixin",
+    "VillagerBreedingMixin",
+    "VillagerTradingMixin"
   ],
   "injectors": {
     "defaultRequire": 1
