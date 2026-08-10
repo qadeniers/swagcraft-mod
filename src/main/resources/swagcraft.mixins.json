@@ -6,7 +6,10 @@
     "PlayerMixin",
     "FoodMixin",
     "FireworkRocketItemMixin",
-    "DrownedMixin"
+    "DrownedMixin",
+    "RabbitMixin",
+    "RabbitPanicGoalMixin",
+    "ProjectileMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -16,9 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Player.class)
 public abstract class PlayerMixin {
-    // hunger
-
-    // iron
     @Unique private static final int REPAIR_INTERVAL_TICKS = 10 * 20;
     @Unique private static final int REPAIR_AMOUNT = 1;
 
