@@ -2,6 +2,7 @@ package dev.gembox.swagcraft.mixin;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
@@ -13,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Villager.class)
 public abstract class VillagerTradingMixin {
     @Inject(method = "rewardTradeXp", at = @At("TAIL"))
-    private void onRewardTradeXp(MerchantOffer offer, CallbackInfo ci) {
+    private void onTrade(MerchantOffer offer, CallbackInfo ci) {
         Villager villager = (Villager) (Object) this;
 
         if (!villager.level().isClientSide() && villager.level() instanceof ServerLevel serverLevel) {
@@ -23,6 +24,7 @@ public abstract class VillagerTradingMixin {
             for (MerchantOffer merchantOffer : offers) {
                 if (merchantOffer.isOutOfStock()) {
                     merchantOffer.resetUses();
+
                     resetAny = true;
                 }
             }
@@ -39,6 +41,11 @@ public abstract class VillagerTradingMixin {
         for (MerchantOffer offer : villager.getOffers()) {
             offer.setSpecialPriceDiff(0);
         }
+        ci.cancel();
+    }
+
+    @Inject(method = "updateDemand", at = @At("HEAD"), cancellable = true)
+    private void freezeDemand(CallbackInfo ci) {
         ci.cancel();
     }
 }

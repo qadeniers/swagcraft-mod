@@ -3,15 +3,15 @@
   "package": "dev.gembox.swagcraft.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "PlayerMixin",
-    "FoodMixin",
-    "FireworkRocketItemMixin",
     "DrownedMixin",
+    "FireworkRocketItemMixin",
+    "FoodMixin",
+    "PlayerMixin",
+    "ProjectileMixin",
     "RabbitMixin",
     "RabbitPanicGoalMixin",
-    "ProjectileMixin",
+    "VillageManagerMixin",
     "VillagerAiMixin",
-    "VillagerBreedingMixin",
     "VillagerTradingMixin"
   ],
   "injectors": {
