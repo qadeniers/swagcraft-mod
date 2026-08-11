@@ -23,6 +23,23 @@ import java.util.List;
 
 @Mixin(Villager.class)
 public abstract class VillagerTradingMixin {
+    @Inject(method = "tick", at = @At("HEAD"))
+    private void catchUnemployedVillagers(CallbackInfo ci) {
+        Villager villager = (Villager) (Object) this;
+
+        if (!villager.level().isClientSide()) {
+            VillagerData data = villager.getVillagerData();
+            Holder<VillagerProfession> prof = data.profession();
+
+            if (prof.is(VillagerProfession.NONE) || prof.is(VillagerProfession.NITWIT)) {
+                Holder<VillagerProfession> newProf = getRandomProfession(villager.getRandom(), prof);
+                if (!newProf.is(VillagerProfession.NONE) && !prof.is(VillagerProfession.NITWIT)) {
+                    villager.setVillagerData(new VillagerData(data.type(), newProf, data.level()));
+                }
+            }
+        }
+    }
+
     @Inject(method = "rewardTradeXp", at = @At("TAIL"))
     private void onTrade(MerchantOffer offer, CallbackInfo ci) {
         Villager villager = (Villager) (Object) this;
