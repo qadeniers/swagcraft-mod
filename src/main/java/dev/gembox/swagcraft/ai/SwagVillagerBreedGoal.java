@@ -1,5 +1,6 @@
 package dev.gembox.swagcraft.ai;
 
+import dev.gembox.swagcraft.Mod;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.npc.villager.Villager;
@@ -24,7 +25,7 @@ public class SwagVillagerBreedGoal extends Goal {
     public boolean canUse() {
         if (this.villager.getAge() != 0) return false;
 
-        if (this.villager.getRandom().nextInt(500) != 0) return false;
+        //if (this.villager.getRandom().nextInt(10) != 0) return false;
 
         if (!this.villager.canBreed()) return false;
 

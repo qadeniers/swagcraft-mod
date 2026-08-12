@@ -13,9 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Villager.class)
 public abstract class VillagerAiMixin extends AbstractVillager {
@@ -34,11 +32,11 @@ public abstract class VillagerAiMixin extends AbstractVillager {
         this.goalSelector.addGoal(4, new OpenDoorGoal(this, true));
 
         this.goalSelector.addGoal(5, new SwagVillagerBreedGoal((Villager) (Object) this));
-        this.goalSelector.addGoal(5, new MoveTowardsRestrictionGoal(this, 0.6D));
+        this.goalSelector.addGoal(6, new MoveTowardsRestrictionGoal(this, 0.6D));
 
-        this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 0.6D));
-        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 0.6D));
+        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(9, new RandomLookAroundGoal(this));
     }
 
     @Redirect(
