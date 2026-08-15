@@ -119,8 +119,6 @@ public abstract class VillageManagerMixin extends AbstractVillager {
         boolean isAdult = villager.getAge() == 0;
         boolean hasFood = villager.hasExcessFood();
 
-        Mod.LOGGER.info("breedingCheck: " + hasFood);
-
         cir.setReturnValue(underPopulationCap && isAdult && hasFood);
     }
 }
